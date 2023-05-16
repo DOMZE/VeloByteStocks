@@ -10,9 +10,9 @@ properties:
 configurationFiles:
   - data/tickers.csv
 failureCriteria:
-  - avg(response_time_ms) > 300
+  - avg(response_time_ms) > 150
   - percentage(error) > 50
-  - GetCustomerDetails: avg(latency) >200
+  - GetStock: avg(latency) > 100
 autoStop:
   errorPercentage: 80
   timeWindow: 60
