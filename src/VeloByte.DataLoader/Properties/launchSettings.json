@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "VeloByte.DataLoader": {
+      "commandName": "Project",
+      "commandLineArgs": "-c \"***REMOVED***\" -d \"***REMOVED***\" -s \"***REMOVED***\""
+    }
+  }
+}
