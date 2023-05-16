@@ -35,40 +35,40 @@ jobs:
           loadtestResource: ${{ vars.LOAD_TEST_RESOURCE_NAME }}
           resourceGroup: ${{ vars.RESOURCE_GROUP_NAME }}
           env: |
-          [
-            {
-              "name": "app_scope",
-              "value": "${{ vars.APP_SCOPE }}"
-            },
-            {
-              "name": "site_uri",
-              "value": "${{ vars.SITE_URI }}"
-            },
-            {
-              "name": "site_port",
-              "value": "${{ vars.SITE_PORT }}"
-            },
-            {
-              "name": "csv_path",
-              "value": "tickers.csv"
-            }
-          ]
+            [
+              {
+                "name": "app_scope",
+                "value": "${{ vars.APP_SCOPE }}"
+              },
+              {
+                "name": "site_uri",
+                "value": "${{ vars.SITE_URI }}"
+              },
+              {
+                "name": "site_port",
+                "value": "${{ vars.SITE_PORT }}"
+              },
+              {
+                "name": "csv_path",
+                "value": "tickers.csv"
+              }
+            ]
           secrets: |
-          [
-            {
-              "name": "app_client_id",
-              "value": "${{ secrets.APP_CLIENT_ID }}"
-            },
-            {
-              "name": "app_tenant_id",
-              "value": "${{ secrets.APP_TENANT_ID }}"
-            },
-            {
-              "name": "user_username",
-              "value": "${{ secrets.USER_USERNAME }}"
-            },
-            {
-              "name": "user_userpassword",
-              "value": "${{ secrets.USER_PASSWORD }}"
-            }
-          ]
+            [
+              {
+                "name": "app_client_id",
+                "value": "${{ secrets.APP_CLIENT_ID }}"
+              },
+              {
+                "name": "app_tenant_id",
+                "value": "${{ secrets.APP_TENANT_ID }}"
+              },
+              {
+                "name": "user_username",
+                "value": "${{ secrets.USER_USERNAME }}"
+              },
+              {
+                "name": "user_userpassword",
+                "value": "${{ secrets.USER_PASSWORD }}"
+              }
+            ]
