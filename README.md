@@ -60,6 +60,6 @@ The API is protected by an Azure AD application. You can create one and enable R
 You can run the following commands to deploy your app to Azure
 ```powershell
 dotnet publish -c Release .\src\VeloByte.StocksAPI\VeloByte.StocksAPI.csproj
-Compress-Archive -Path .\src\VeloByte.StocksAPI\bin\Release\net7.0\publish\* -DestinationPath ..\Temp\VeloByte.API.zip
-Publish-AzWebApp -ResourceGroupName <your_resourcegroup_name> -Name <your_web_app_name> -ArchivePath ..\Temp\VeloByte.API.zip -Force
+Compress-Archive -Path .\src\VeloByte.StocksAPI\bin\Release\net7.0\publish\* -DestinationPath <destination_path>\VeloByte.API.zip
+Publish-AzWebApp -ResourceGroupName <your_resourcegroup_name> -Name <your_web_app_name> -ArchivePath <destination_path>\VeloByte.API.zip -Force
 ```
