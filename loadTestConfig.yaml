@@ -1,0 +1,19 @@
+# https://learn.microsoft.com/en-us/azure/load-testing/reference-test-config-yaml
+version: v0.1
+testId: StockAPITests
+displayName: VeloByte Stocks API Tests
+testPlan: TestPlan.jmx
+description: Load test the VeloByte Stocks API
+engineInstances: 1
+properties:
+  userPropertyFile: loadtest.properties
+configurationFiles:
+  - data/tickers.csv
+failureCriteria:
+  - avg(response_time_ms) > 300
+  - percentage(error) > 50
+  - GetCustomerDetails: avg(latency) >200
+autoStop:
+  errorPercentage: 80
+  timeWindow: 60
+splitAllCSVs: True

@@ -16,43 +16,51 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="APP_CLIENT_ID" elementType="Argument">
             <stringProp name="Argument.name">APP_CLIENT_ID</stringProp>
-            <stringProp name="Argument.value"></stringProp>
+            <stringProp name="Argument.value">${__GetSecret(app_client_id)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">The client id of the Azure AD application to fetch the access token from</stringProp>
           </elementProp>
           <elementProp name="APP_SCOPE" elementType="Argument">
             <stringProp name="Argument.name">APP_SCOPE</stringProp>
-            <stringProp name="Argument.value"></stringProp>
+            <stringProp name="Argument.value">${__BeanShell( System.getenv(&quot;app_scope&quot;) )}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">The scope to request when requesting the access token</stringProp>
           </elementProp>
           <elementProp name="APP_TENANT_ID" elementType="Argument">
             <stringProp name="Argument.name">APP_TENANT_ID</stringProp>
-            <stringProp name="Argument.value"></stringProp>
+            <stringProp name="Argument.value">${__GetSecret(app_tenant_id)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">The tenant id associated to the AD application</stringProp>
           </elementProp>
           <elementProp name="SITE_URI" elementType="Argument">
             <stringProp name="Argument.name">SITE_URI</stringProp>
-            <stringProp name="Argument.value"></stringProp>
+            <stringProp name="Argument.value">${__BeanShell( System.getenv(&quot;site_uri&quot;) )}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">The site uri. Does not contain http/https</stringProp>
           </elementProp>
           <elementProp name="SITE_PORT" elementType="Argument">
             <stringProp name="Argument.name">SITE_PORT</stringProp>
-            <stringProp name="Argument.value"></stringProp>
+            <stringProp name="Argument.value">${__BeanShell( System.getenv(&quot;site_port&quot;) )}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">The site port</stringProp>
           </elementProp>
           <elementProp name="CSV_PATH" elementType="Argument">
             <stringProp name="Argument.name">CSV_PATH</stringProp>
-            <stringProp name="Argument.value"></stringProp>
+            <stringProp name="Argument.value">${__BeanShell( System.getenv(&quot;csv_path&quot;) )}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">The csv file path. Azure Load Testing currently doesn&apos;t support the use of file paths in the JMX file. When you reference an external file in the test script, make sure to only specify the file name.</stringProp>
           </elementProp>
           <elementProp name="USER_USERNAME" elementType="Argument">
             <stringProp name="Argument.name">USER_USERNAME</stringProp>
-            <stringProp name="Argument.value"></stringProp>
+            <stringProp name="Argument.value">${__GetSecret(user_username)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">The user username</stringProp>
           </elementProp>
           <elementProp name="USER_PASSWORD" elementType="Argument">
             <stringProp name="Argument.name">USER_PASSWORD</stringProp>
-            <stringProp name="Argument.value"></stringProp>
+            <stringProp name="Argument.value">${__GetSecret(user_password)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">The user password</stringProp>
           </elementProp>
         </collectionProp>
       </Arguments>
@@ -87,12 +95,12 @@
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">1</stringProp>
+          <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">1</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
-        <boolProp name="ThreadGroup.scheduler">false</boolProp>
-        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(threadCount,1)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${__P(rampUpSeconds,1)}</stringProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">${__P(durationSeconds,30)}</stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
